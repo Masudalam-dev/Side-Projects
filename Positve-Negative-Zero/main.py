@@ -44,3 +44,23 @@ elif is_negative and is_odd:
 else:
     print("Zero")
 
+
+
+# By chatGPT
+user_num = int(input("Enter a num:\n"))
+
+is_positive = user_num > 0
+is_negative = user_num < 0
+is_even = user_num % 2 == 0
+
+if is_positive and is_even:
+    print("Even Positive")
+elif is_positive and not is_even:
+    print("Odd Positive")
+elif is_negative and is_even:
+    print("Even Negative")
+elif is_negative and not is_even:
+    print("Odd Negative")
+else:
+    print("Zero")
+
