@@ -1,13 +1,24 @@
-# Add Expense
 
 print("Welcome to Expense Tracker Website. Add your today Expenses.")
-print("Enter 1 👉 add expenses. 2 👉 show expense. 3 👉 See total expenses.")
+print("Enter 1 👉 add expenses. 2 👉 show expense. 3 👉 See total expenses. 4 👉 to Exit.")
 print("---------------------------------------------------------------\n")
 
 expenses = []
 
 while True:
-    choice = input("Enter number: ").strip()
+    while True:
+        choice = input("Enter number: ").strip()
+        is_digit = choice.isdigit()
+
+        if is_digit:
+            if 0 < int(choice) <= 4:
+                break
+            else:
+                print("Please Enter Number between 1 to 4")
+        else:
+            print("Invalid Input! You have not entered a number.")
+
+
     categories = ["Food", "Travel", "Shopping", "Entra"]
     # Add Expenses
     if choice == "1":
@@ -26,17 +37,26 @@ while True:
             print("Your list is Empty:")
         else:
             print("Your Expenses by Category.")
-            for idx, individual_category in enumerate(categories and expenses, start=1):
-                print(f"{idx}.{individual_category}: ")
+            idx = 0
+            for cat,amt in zip(categories,expenses):
+                idx += 1
+                print(f"{idx}.{cat} = ${amt}")
 
-            print(expenses)
+    # Show the total Spending
+    elif choice == "3":
+        if not expenses:
+            print("Your Spending is 0.")
+        else:
+            total = sum(map(int,expenses))
+            print(f"Your total Expending: ${total}")
 
+    # Exit
     elif choice == "4":
+        print("Exit: Have a Good Day!")
         break
     else:
         print("Invalid Input!")
         break
-
 
 
 
