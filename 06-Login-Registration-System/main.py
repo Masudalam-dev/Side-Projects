@@ -1,6 +1,7 @@
 # Login-Registration-System Project
 # Store data in dictionary
-user_pass = {"Username": [], "Password": []}
+user_pass = {}
+
 print("Welcome to the login username project.")
 print("Press 1 for Register.\nPress 2 for Login.\nPress 3 for Exit.\n")
 
@@ -10,54 +11,51 @@ while True:
 
     if not choice.isdigit():
         print("Invalid Input!")
+        continue
 
     elif choice == "1":
         while True:
             # Registration
-            store_user_name = input("Enter Your Username: ").strip()
-            if not store_user_name:
+            user_name = input("Enter Username: ").strip()
+            if not user_name:
                 print("Username can't be empty.")
-
-            elif store_user_name.isdigit():
+            elif user_name in user_pass:
+                print("Username already exists.")
+            elif user_name.isdigit():
                 print("Username should at least one letter.")
-            elif len(store_user_name) < 4:
+            elif len(user_name) < 4:
                 print("Username should be at least 4 character long.")
 
             else:
-                user_pass["Username"].append(store_user_name)
-                print("Your Username is added.")
                 break
 
         while True:
-            store_user_password = input("Enter Your Password: ").strip()
-            if not store_user_password:
+            user_password = input("Enter Password: ").strip()
+            if not user_password:
                 print("Password can't be empty.")
-            elif not store_user_password.isdigit():
+            elif not user_password.isdigit():
                 print("Password should be in number only.")
-            elif len(store_user_password) < 5:
+            elif len(user_password) < 5:
                 print("The length of Password should be at least 5")
 
             else:
-                user_pass["Password"].append(store_user_password)
-                print("Your Password is added.")
                 break
+
+        user_pass[user_name] = user_password
+        print("Registration Successful ✅.")
 
     # TO login
     elif choice == "2":
         check_user_name = input("Enter Your Username: ").strip()
         check_user_password = input("Enter Your Password: ").strip()
 
-        login_success = check_user_name in user_pass["Username"] and check_user_password in user_pass["Password"]
+        if check_user_name in user_pass and user_pass[check_user_name] == check_user_password:
+            print("Login Successful ✅.")
 
-        if login_success:
-            print("Login Successful.")
-
-        elif check_user_name not in user_pass["Username"]:
+        elif check_user_name not in user_pass:
             print("User not found.")
-        elif check_user_password not in user_pass["Password"]:
-            print("Incorrect Password.")
         else:
-            print("Hello")
+            print("Incorrect Password.")
 
 
     elif choice == "3":
