@@ -1,4 +1,6 @@
 # 1 store questions and correct answer
+print("Welcome to Game of quiz!\n")
+
 quiz = {
     "q1": {
         "question": "What is the result of 0.1 + 0.2 == 0.3?",
@@ -12,26 +14,43 @@ quiz = {
         "answer": "B) 2 ** 3"
     },
 
-    "q3": {}
+    "q3": {
+        "question": "How do you add 'apple' to the end of a list called fruits?",
+        "options": ["A) fruits.add('apple')", "B) fruits.push('apple')", "C) fruits.append('apple')", "D) fruits + 'apple'"],
+        "answer": "fruits.append('apple')"
+    },
+
+    "q4": {
+        "question": "Which symbol do you use to write a comment in Python?",
+        "options": ["A) //", "B) /*", "C) --", "D) #"],
+        "answer": "D) #"
+    },
+
+    "q5": {
+        "question": "What is the standard naming style for variables in Python (like my_variable)?",
+        "options": ["A) snake_case", "B) camelCase", "C) PascalCase", "D) SCREAMING_SNAKE_CASE"],
+        "answer": "A) snake_case"
+    }
 }
 
+# 2 ask question one by one
+
+
+while True:
+    for q in quiz.values():
+        print(q["question"])
+        for option in q["options"]:
+            print(option)
+        user_ans = input("Choose the correct options: \n")
+
+
+    break
 
 
 
-question = ["What is the result of 0.1 + 0.2 == 0.3?",
-            "How do you calculate 2 to the power of 3 (2³) in Python?",
-            "How do you add 'apple' to the end of a list called fruits?",
-            "Which symbol do you use to write a comment in Python?",
-            "What is the standard naming style for variables in Python (like my_variable)?",
-            ]
-answer = ["False", "2 ** 3", "fruits.append('apple')", "#", "snake_case"]
-
-print(quiz["q1"]["question"])
-for i in quiz["q1"]["options"]:
-    print(i)
-
-user_input = input("Enter the right option.")
-if user_input.lower() == "b":
-    print("Well done ✅")
-else:
-    print(f"Correct answer: {quiz["q1"]["answer"]}")
+#
+# user_input = input("Enter the right option.")
+# if user_input.lower() == "b":
+#     print("Well done ✅")
+# else:
+#     print(f"Correct answer: {quiz["q1"]["answer"]}")
