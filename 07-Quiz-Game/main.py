@@ -40,7 +40,7 @@ quiz = {
 
 # 2 ask question one by one
 score = 0
-
+wrong_score = 0
 for q in quiz.values():
     print(q["question"])
     for option in q["options"]:
@@ -53,8 +53,11 @@ for q in quiz.values():
         score += 1
     else:
         print(f"Wrong ❌ | Correct Ans: {q['answer']}")
+        wrong_score += 1
 
 
 # 04 Final Result
-print(f"You answered correctly: {score} questions.")
-print(f"Your final Score: {score * 5}")
+percentage = (score/len(quiz))* 100
+print(f"You answered correctly: {score} question.")
+print(f"You answered wrong: {wrong_score} question.")
+print(f"Your final Score: {percentage} percentage.")
