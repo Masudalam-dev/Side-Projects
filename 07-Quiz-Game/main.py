@@ -3,54 +3,58 @@ print("Welcome to Game of quiz!\n")
 
 quiz = {
     "q1": {
-        "question": "What is the result of 0.1 + 0.2 == 0.3?",
+        "question": "01.What is the result of 0.1 + 0.2 == 0.3?",
         "options": ["A) True", "B) False", "C) None", "D) SyntaxError"],
-        "answer": "B) False"
+        "answer": "B) False",
+        "correct_answer": "b"
     },
 
     "q2": {
-        "question": "How do you calculate 2 to the power of 3 (2³) in Python?",
+        "question": "02.How do you calculate 2 to the power of 3 (2³) in Python?",
         "options": ["A) 2 ^ 3", "B) 2 ** 3", "C) 2 x 3", "D) math.power(2, 3)"],
-        "answer": "B) 2 ** 3"
+        "answer": "B) 2 ** 3",
+        "correct_answer": "b"
     },
 
     "q3": {
-        "question": "How do you add 'apple' to the end of a list called fruits?",
+        "question": "03.How do you add 'apple' to the end of a list called fruits?",
         "options": ["A) fruits.add('apple')", "B) fruits.push('apple')", "C) fruits.append('apple')", "D) fruits + 'apple'"],
-        "answer": "fruits.append('apple')"
+        "answer": "C) fruits.append('apple')",
+        "correct_answer": "c"
     },
 
     "q4": {
-        "question": "Which symbol do you use to write a comment in Python?",
+        "question": "04.Which symbol do you use to write a comment in Python?",
         "options": ["A) //", "B) /*", "C) --", "D) #"],
-        "answer": "D) #"
+        "answer": "D) #",
+        "correct_answer": "d"
     },
 
     "q5": {
-        "question": "What is the standard naming style for variables in Python (like my_variable)?",
+        "question": "05.What is the standard naming style for variables in Python (like my_variable)?",
         "options": ["A) snake_case", "B) camelCase", "C) PascalCase", "D) SCREAMING_SNAKE_CASE"],
-        "answer": "A) snake_case"
+        "answer": "A) snake_case",
+        "correct_answer": "a"
     }
 }
 
 # 2 ask question one by one
+score = 0
+
+for q in quiz.values():
+    print(q["question"])
+    for option in q["options"]:
+        print(option)
+
+# 03 check Answer
+    user_ans = input("Choose the correct options: \n").strip()
+    if user_ans.lower() == q["correct_answer"]:
+        print("Correct ✅")
+        score += 1
+    else:
+        print(f"Wrong ❌ | Correct Ans: {q['answer']}")
 
 
-while True:
-    for q in quiz.values():
-        print(q["question"])
-        for option in q["options"]:
-            print(option)
-        user_ans = input("Choose the correct options: \n")
-
-
-    break
-
-
-
-#
-# user_input = input("Enter the right option.")
-# if user_input.lower() == "b":
-#     print("Well done ✅")
-# else:
-#     print(f"Correct answer: {quiz["q1"]["answer"]}")
+# 04 Final Result
+print(f"You answered correctly: {score} questions.")
+print(f"Your final Score: {score * 5}")
